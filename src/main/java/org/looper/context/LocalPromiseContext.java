@@ -15,20 +15,21 @@ public class LocalPromiseContext extends Context {
     }
 
     public enum PROMISE_STATUS {
+        PENDING,
         RESOLVED,
         REJECTED
     }
 
     private ITaskTwo task;
-    private PROMISE_STATUS promiseStatus;
+    private PROMISE_STATUS promiseStatus = PROMISE_STATUS.PENDING;
     private Object promiseValue;
 
 
-    ITaskOne resolve = (Object e)->{
+    ITaskOne resolve = (Object e) -> {
         promiseStatus = PROMISE_STATUS.RESOLVED;
         promiseValue = e;
     };
-    ITaskOne reject = (Object e)-> {
+    ITaskOne reject = (Object e) -> {
         promiseStatus = PROMISE_STATUS.REJECTED;
         promiseValue = e;
     };
